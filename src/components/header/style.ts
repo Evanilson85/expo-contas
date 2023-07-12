@@ -4,14 +4,14 @@ import { StatusBar } from "react-native";
 const heightStatusBar = StatusBar.currentHeight ? StatusBar.currentHeight : 64;
 
 export const Container = styled.View`
-  background-color: ${(props: any) => props.theme.COLORS.DEFAULT};
   height: 150px;
   display: flex;
-  flex-direction: row;
   padding: 20px;
   align-items: center;
+  flex-direction: row;
   justify-content: space-between;
   padding-top: ${Math.round(heightStatusBar)}px;
+  background-color: ${(props: any) => props.theme.COLORS.DEFAULT};
 `;
 
 export const text = styled.Text`

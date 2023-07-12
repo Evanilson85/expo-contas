@@ -4,6 +4,8 @@ export default {
     WHITE: "#FFFFFF",
     PAGE: "#e2e8f0",
 
+    ROW: "#f3f4f6",
+
     GREEN_700: "#00875F",
     GREEN_500: "#00B37E",
 

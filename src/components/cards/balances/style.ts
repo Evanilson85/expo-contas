@@ -10,14 +10,27 @@ export const container = styled.View`
 `;
 
 export const containerValue = styled.View`
-  border: none;
-  /* border-left: 2px solid red; */
+  border-color: ${(props: any) => props.theme.COLORS.DEFAULT};
   padding: 10px;
-  border-color: #234252;
-  border-left-width: 4px;
+  border-left-width: 3px;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-style: solid;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 export const textValue = styled.Text`
-  color: #000;
+  color: ${(props: any) => props.theme.COLORS.GRAY_300};
   font-size: 24px;
+  font-family: "Roboto_700Bold";
+`;
+
+export const btnEye = styled.TouchableOpacity`
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute;
+  top: -30px; */
 `;

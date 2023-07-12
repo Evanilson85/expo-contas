@@ -12,7 +12,7 @@ export const Header = () => {
       <StatusBar style='light' backgroundColor='#22c55e'  translucent animated networkActivityIndicatorVisible={true}  />
       <S.Container>
         <S.div>
-          <S.Logo source={logo} placeholder={blurhash} transition={1000} />
+          {/* <S.Logo source={logo} placeholder={blurhash} transition={1000} /> */}
           <S.sub>
              <S.h2>Bem vindo</S.h2>
              <S.text>Evanilson</S.text>

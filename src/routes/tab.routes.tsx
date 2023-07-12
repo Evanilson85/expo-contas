@@ -14,7 +14,6 @@ export default function TabRouters () {
       tabBarShowLabel: false,
       tabBarStyle: {
         position: 'absolute',
-
         bottom: 14,
         left: 14,
         right: 14,
