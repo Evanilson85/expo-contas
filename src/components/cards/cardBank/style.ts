@@ -9,11 +9,17 @@ export const container = styled.TouchableOpacity`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 0px;
 `;
 
-export const logo = styled.Image`
+export const logo = styled.View`
   margin: 0 10px 0 0;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
 `;
 
 export const name = styled.Text`
