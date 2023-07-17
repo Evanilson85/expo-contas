@@ -1,36 +1,42 @@
 import { CardBank } from '../cardBank'
 import * as S from './style'
+//  const navigation = useNavigation<AppNavigatorRoutesProps>();
+import { useNavigation } from '@react-navigation/native';
+import { AppNavigatorRoutesProps } from '../../../routes/Stack.routes';
 
 export const Card = () => {
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+  
+  const handleOpenCardCreateScreen = () => {
+    navigation.navigate('CardCreateScreen');
+  }
 
-const back = [
-    {
-        id: 1,
-        name: ''
-    },
-    {
-        id: 3,
-        name: ''
-    },
-    {
-        id: 4,
-        name: ''
-    },
-]
+  const back = [
+      {
+          id: 1,
+          name: ''
+      },
+      {
+          id: 3,
+          name: ''
+      },
+      {
+          id: 4,
+          name: ''
+      },
+  ]
 
-return (
+  return (
     <>
-        <S.container>
-            <S.text>
-                Meus Saldos 
-            </S.text>
-            {back.map(({id}) => (
-                <CardBank key={id} />
-            ))}
-        </S.container>   
-         <S.createBtn> 
-                <S.textBtn>Adicionar Cartão</S.textBtn>
-         </S.createBtn> 
+      <S.container>
+        <S.text> Meus Saldos </S.text>
+        {back.map(({id}) => (
+            <CardBank key={id} />
+        ))}
+      </S.container>   
+      <S.createBtn onPress={handleOpenCardCreateScreen}> 
+        <S.textBtn>Adicionar Cartão</S.textBtn>
+      </S.createBtn> 
     </>
-)
+  )
 }

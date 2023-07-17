@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Home } from "../screens/home";
 import { Financial } from "../screens/financial";
+import { Profile } from "../screens/profile";
 
 import { Ionicons } from '@expo/vector-icons'
 
@@ -33,7 +34,24 @@ export default function TabRouters () {
         }
       }}
       />
-      <Tab.Screen name="Financial" component={Financial} />
+      <Tab.Screen name="Financial" component={Financial}  options={{
+        headerShown: false,
+        tabBarIcon : ({color, size, focused}) => {
+          if(focused) {
+            return <Ionicons name="home" size={size} color={color}/>
+          }
+          return <Ionicons name="home-outline" size={size} color={color}/>
+        }
+      }} />
+      <Tab.Screen name="Profile" component={Profile}  options={{
+        headerShown: false,
+        tabBarIcon : ({color, size, focused}) => {
+          if(focused) {
+            return <Ionicons name="home" size={size} color={color}/>
+          }
+          return <Ionicons name="home-outline" size={size} color={color}/>
+        }
+      }} />
     </Tab.Navigator>
   );
 }

@@ -2,9 +2,14 @@ import * as S from './style'
 import Nubank from '../../../assets/bank/nubank.svg'
 import Inter from '../../../assets/bank/banco-inter.svg'
 // import logo from '../../../assets/lion.png'
-export const CardBank = () => {
+
+interface PROPS {
+  border?: boolean
+}
+
+export const CardBank = ({ border }: PROPS) => {
   return <>
-    <S.container>
+    <S.container border={border}>
       <S.div>
         <S.logo>
           <Inter width={40} height={40} />

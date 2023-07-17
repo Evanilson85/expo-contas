@@ -1,5 +1,5 @@
 import * as S from './style'
-import { Balances } from '../../components/cards/balances';
+import { Balances } from '../../components/balances';
 import { Header } from "../../components/header";
 import { Faturas } from '../../components/faturas';
 import { History } from '../../components/history';

@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 export const container = styled.TouchableOpacity`
   width: 100%;
@@ -10,6 +10,14 @@ export const container = styled.TouchableOpacity`
   align-items: center;
   justify-content: space-between;
   padding: 0 0px;
+
+  ${({ border }: any) =>
+    border &&
+    css`
+      border-color: ${(props: any) => props.theme.COLORS.ROW};
+      border-bottom-width: 2px;
+      border-style: solid;
+    `}/* border-top-color: transparent; */
 `;
 
 export const logo = styled.View`

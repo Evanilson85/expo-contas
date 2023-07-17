@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Ionicons  } from '@expo/vector-icons';
-import { Card } from '../card';
+import { Card } from '../cards/card';
 import * as S from './style'
 
 export const Balances = () => {
