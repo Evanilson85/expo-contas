@@ -4,6 +4,7 @@ import theme from "./src/themes";
 import { Roboto_400Regular, Roboto_700Bold } from "@expo-google-fonts/roboto";
 import { useFonts } from "expo-font";
 import { Text } from 'react-native'
+
 // import {Loading} from '@components/loading'
 
 export default function App() {
@@ -18,7 +19,7 @@ export default function App() {
     <ThemeProvider theme={theme}>
       {/* <Header /> */}
       {/* <Route /> */}
-      {loadFont ? <Route /> : <Text>Carregando</Text>}
+      {loadFont ?   <Route /> : <Text>Carregando</Text>}
     </ThemeProvider>
   );
 }

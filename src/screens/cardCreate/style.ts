@@ -1,10 +1,17 @@
 import styled from "styled-components/native";
 import { CardBank } from "../../components/cards/cardBank";
 
+export const tes = styled.View`
+  flex: 1;
+  /* background-color: #000; */
+  /* opacity: 1; */
+`;
+
 export const container = styled.View`
   /* background-color: ${({ theme }: any) => theme.COLORS.PAGE}; */
   background-color: ${({ theme }: any) => theme.COLORS.WHITE};
   flex: 1;
+  /* background-color: red; */
   padding: 0 24px;
 `;
 
@@ -27,6 +34,7 @@ export const buttonCreate = styled.TouchableOpacity`
   align-items: center;
   justify-content: center;
 `;
+
 export const textButton = styled.Text`
   font-family: "Roboto_700Bold";
 `;
