@@ -1,12 +1,16 @@
 import styled from "styled-components/native";
+import { TextInput } from "react-native-paper";
 
-export const day = styled.TextInput`
-  height: 60px;
-  padding: 10px 20px;
-  border-radius: 5px;
+export const day = styled(TextInput).attrs({
+  mode: "outlined",
+  outlineColor: "#d3d3d3",
+  activeOutlineColor: "#474646",
+})`
+  background-color: ${({ theme }: any) => theme.COLORS.Input};
+`;
+
+export const textInput = styled.TextInput`
   font-size: 14px;
+  padding: 20px;
   font-family: "Roboto_700Bold";
-  border: 1px solid #d3d3d3;
-  flex: 1;
-  margin: 10px 2px;
 `;

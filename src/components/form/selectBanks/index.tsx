@@ -9,12 +9,10 @@ import * as S from './style'
 interface PROPS {
   iconName: string
   name: string
+  handleClick: () => void
 }
 
-export const SelectBanks = ({ iconName, name }: PROPS) => {
-
- 
-
+export const SelectBanks = ({ iconName, name, handleClick }: PROPS) => {
   const render = (name: any) => {
     const json = {
       'Nubank':      <Nubank width={40} height={40} />,
@@ -29,7 +27,7 @@ export const SelectBanks = ({ iconName, name }: PROPS) => {
 
   return <>
       <S.container>
-        <S.buttonSelect>
+        <S.buttonSelect onPress={handleClick}>
           <S.containerBank>
             {render(iconName)}
           </S.containerBank>
@@ -37,11 +35,6 @@ export const SelectBanks = ({ iconName, name }: PROPS) => {
             {name}
           </S.text>
         </S.buttonSelect>
-        {/* {propsJson.map(({iconName, name}: PROPS) => (
-          <S.scrollContainer key={iconName}>
-          </S.scrollContainer>
-        ))}  */}
-        {/* <Inter width={40} height={40} /> */}
       </S.container> 
   </>
 }

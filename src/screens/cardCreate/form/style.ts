@@ -74,14 +74,27 @@ export const backContainer = styled.TouchableOpacity`
 `;
 
 export const div = styled.View`
-  margin: 0px 0 10px;
+  margin: 0px 0 0px;
 `;
 
-export const iconBackgroud = styled.View`
-  border: 2px dashed #d3d3d3;
+export const row = styled.View`
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+`;
+
+export const iconBackgroud = styled.TouchableOpacity`
+  /* border: 2px dashed #d3d3d3; */
+  border: 2px dashed #474646;
   border-radius: 50px;
-  height: 50px;
+  height: 45px;
   align-items: center;
   justify-content: center;
-  width: 50px;
+  width: 45px;
+`;
+
+export const label = styled.Text`
+  font-size: 14px;
+  font-family: "Roboto_700Bold";
+  color: #474646;
 `;

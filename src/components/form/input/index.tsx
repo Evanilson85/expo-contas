@@ -1,11 +1,21 @@
 import * as S from './style'
+import { TextInputProps } from 'react-native-paper';
 
-interface PROPS {
-  
+interface Props extends TextInputProps {
+  labelName: string
 }
 
-export const Input = ({...props}) => {
+// type Props = TextInputProps
+
+export const Input = ({ labelName, ...props}: Props) => {
   return <>
-    <S.input {...props} />
+    <S.Input 
+        mode="outlined"
+        outlineColor='#d3d3d3'
+        activeOutlineColor='#474646'
+        style={{ fontSize : 16}}
+        label={<S.textInput>{labelName}</S.textInput>}
+        {...props} 
+    />
   </>
 }

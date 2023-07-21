@@ -1,8 +1,15 @@
-import { View, Text } from 'react-native'
 import * as S from './style'
+import { TextInputProps } from 'react-native-paper';
 
-export const Day = ({ ...props }) => {
+interface Props extends TextInputProps {
+  labelName: string
+}
+
+export const Day = ({labelName, ...props }: Props) => {
   return <>
-    <S.day {...props} />
+    <S.day 
+      label={<S.textInput>{labelName}</S.textInput>} 
+      {...props} 
+    />
   </>
 }
