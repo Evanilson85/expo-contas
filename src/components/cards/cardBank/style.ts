@@ -27,7 +27,7 @@ export const logo = styled.View`
   border-radius: 50px;
   align-items: center;
   justify-content: center;
-  /* background-color: red; */
+  background-color: ${(props: any) => props.theme.COLORS.ROW};
 `;
 
 export const name = styled.Text`
@@ -46,3 +46,9 @@ export const div = styled.View`
 export const subDiv = styled.View``;
 
 export const btnText = styled.TouchableOpacity``;
+
+export const text = styled.Text`
+  text-transform: uppercase;
+  font-family: "Roboto_700Bold";
+  font-size: 20px;
+`;

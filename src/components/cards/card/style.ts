@@ -31,3 +31,9 @@ export const textBtn = styled.Text`
   color: #065f46;
   font-family: "Roboto_700Bold";
 `;
+
+export const div = styled.View`
+  flex: 1;
+  align-items: center;
+  margin: 50px 0;
+`;

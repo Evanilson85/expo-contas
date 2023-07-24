@@ -1,37 +1,64 @@
-import { View, TouchableWithoutFeedback, StyleSheet, Keyboard } from 'react-native'
 import * as S from './style'
+import { useRef, useMemo, useState, useCallback, useContext } from 'react'
+import { View, TouchableWithoutFeedback, StyleSheet, Keyboard } from 'react-native'
+import { AntDesign, Entypo } from '@expo/vector-icons'
+
+import BottomSheet, { BottomSheetSectionList } from "@gorhom/bottom-sheet"
+import { useForm, Controller } from 'react-hook-form'
+import { ActivityIndicator, MD2Colors  } from 'react-native-paper'
+
 import { HeaderStack } from '../../../components/headerStack'
 import { Input } from '../../../components/form/input'
 import { Select } from '../../../components/form/select'
+import { InputValueMoney } from '../../../components/form/inputValueMoney'
 import { Day } from '../../../components/form/day'
+import { SelectBanks } from '../../../components/form/selectBanks'
 import { ValueAll } from '../../../components/form/value'
 import Time from '../../../components/form/timer'
 
-import { AntDesign, Entypo } from '@expo/vector-icons';
+import { createContextSaveCard } from '../../../context'
 
-import { useRef, useMemo, useState, useCallback } from 'react'
-
-import BottomSheet, { BottomSheetSectionList } from "@gorhom/bottom-sheet";
-import { SelectBanks } from '../../../components/form/selectBanks'
-
-import { ActivityIndicator, MD2Colors  } from 'react-native-paper';
-import { InputValueMoney } from '../../../components/form/inputValueMoney'
+import { AppNavigatorRoutesProps } from '../../../routes/Stack.routes'
+import { useNavigation } from '@react-navigation/native';
 
 interface PARAMSJSON {
   iconName: string
   name: string
 }
 
+type FORMPROPSVALUES = {
+  name: string
+  typeCard: string
+  maturity: string 
+  icon?: any
+  value:  number
+}
+
 export const FormCreateCard = () => {
-  
-  const buttonSheet = useRef<BottomSheet>(null)
-  // const snapPoints = useMemo(() => ["25%", "40%"], []);
-  const snapPoints = useMemo(() => ["25%", "40%", "60%"], []);
+
   const [open, setOpen] = useState(-1)
   const [openBank, setOpenBank] = useState(false)
-
   const [valueSelect, setValueSelect] = useState('')
   const [valueSelectIcon, setValueSelectIcon] = useState<PARAMSJSON[]>([])
+  const [disabled, setDisabled] = useState(false)
+
+  const { teste } = useContext(createContextSaveCard)
+ const navigation = useNavigation<AppNavigatorRoutesProps>();
+
+  const buttonSheet = useRef<BottomSheet>(null)
+  // const snapPoints = useMemo(() => ["25%", "40%", "60%"], []);
+  const snapPoints = useMemo(() => ["25%", "60%"], []);
+
+  const { handleSubmit, control, register, setValue } = useForm<FORMPROPSVALUES>({ })
+
+  const handleFormCreateCard = (data: any) => {
+    teste(data)
+    setDisabled(true)
+    navigation.goBack()
+    setTimeout(() => {
+      setDisabled(false)
+    }, 4000);
+  }
 
   const banksJson = [
     {
@@ -58,6 +85,7 @@ export const FormCreateCard = () => {
 
   const handleSelect = ({ name }: any) => {
     setValueSelect(name)
+    setValue('typeCard', name)
     handleSelectClose() 
   }
 
@@ -119,6 +147,7 @@ export const FormCreateCard = () => {
   const selectIconDefault = (iconName: string, name: string): void => {
     const json = [{ iconName, name }]
     setValueSelectIcon(json)
+    setValue('icon', { iconName, name })
     handleSelectClose()
   }
   
@@ -126,32 +155,73 @@ export const FormCreateCard = () => {
     openModalIcon()
     const json = [{ iconName, name }]
     setValueSelectIcon(json)
+    setValue('icon', { iconName, name })
   }
 
   return <>
     <HeaderStack title='Cartão' />
     <View style={styles.container}>
       <S.form>
-        <Input  labelName='Nome do cartão' />
+        <Controller 
+          control={control}
+          name='name'
+          rules={{ required: true }}
+          render={({ field: { onChange, value }}) => (
+            <Input 
+              labelName='Nome do cartão' 
+              onChangeText={onChange} 
+              value={value} 
+            />
+          )}
+        />
         <S.grupContainer >
           <TouchableWithoutFeedback onPress={openModalSelect}  >
             <View style={{ height: 60, flex: 1}}>
-              <Select labelName='Selecione o tipo' edite editable={false} value={valueSelect} />
+              <Select 
+                labelName='Selecione o tipo' 
+                edite 
+                editable={false} 
+                value={valueSelect} 
+                // {...register('typeCard', { value: valueSelect})} 
+              />
             </View>
           </TouchableWithoutFeedback>
           <TouchableWithoutFeedback >
             <View style={{ height: 60, flex: 1}}>
-              <Day labelName='Vencimento' keyboardType='numeric' maxLength={2} />
+              <Controller 
+                control={control}
+                name='maturity'
+                rules={{ required: true }}
+                render={({ field: { onChange, value }}) => (
+                  <Day 
+                    labelName='Vencimento' 
+                    keyboardType='numeric' 
+                    maxLength={2} 
+                    onChangeText={onChange} 
+                    value={value} 
+                  />
+                )}
+              />
             </View>
           </TouchableWithoutFeedback>
         </S.grupContainer>
         <S.div>
           {valueSelectIcon.length > 0 ? valueSelectIcon.map(({ iconName, name }) => (
-            <SelectBanks handleClick={() => openModalSelected(iconName, name)} key={iconName} iconName={iconName} name={name} />
+            <SelectBanks 
+              handleClick={() => openModalSelected(iconName, name)} 
+              key={iconName} 
+              iconName={iconName} 
+              namebank={name} 
+              // {...register('icon', { value: valueSelectIcon})}
+            />
           )): 
           <S.row>
             <S.iconBackgroud onPress={openModalIcon}>
-              <AntDesign name="plus" size={24} color="#474646" />
+              <AntDesign 
+                name="plus" 
+                size={24} 
+                color="#474646" 
+              />
             </S.iconBackgroud>
               <S.label>
                 Adicionar icone (Opcional)
@@ -159,13 +229,22 @@ export const FormCreateCard = () => {
           </S.row>
           }
         </S.div>
-        {/* <ValueAll placeholder='Valor' keyboardType='numeric'/>  */}
-        <InputValueMoney />
-        <S.buttonCreate>
+        <Controller 
+          name='value'
+          control={control}
+          rules={{ required: true }}
+          render={({field: { onChange, value }}) => (
+            <InputValueMoney value={value} onChangeValue={onChange} />
+          )}
+        />
+        <S.buttonCreate onPress={handleSubmit(handleFormCreateCard)} disabled={disabled}>
+          {disabled ? (
+            <ActivityIndicator animating={true} color={MD2Colors.green900} />
+          ): 
           <S.textButton>
             Salvar
-             {/* <ActivityIndicator animating={true} color={MD2Colors.red800} /> */}
           </S.textButton>
+          }
         </S.buttonCreate> 
       </S.form> 
     <S.backContainer open={open == 1 ? true : false} onPress={handleSelectClose}>
@@ -176,10 +255,15 @@ export const FormCreateCard = () => {
         enablePanDownToClose 
         onClose={() => handleSelectClose()}
         style={{ backgroundColor: '#fff'}}
-        >
-        {openBank ? 
+      >
+        { openBank ? 
           banksJson.map(({ iconName, name }) => (
-            <SelectBanks handleClick={() => selectIconDefault(iconName, name)} key={iconName} iconName={iconName} name={name} />
+            <SelectBanks 
+              handleClick={() => selectIconDefault(iconName, name)} 
+              key={iconName} 
+              iconName={iconName} 
+              namebank={name} 
+            />
           )) : 
           <BottomSheetSectionList
             sections={sections}

@@ -8,11 +8,11 @@ import * as S from './style'
 
 interface PROPS {
   iconName: string
-  name: string
+  namebank: string
   handleClick: () => void
 }
 
-export const SelectBanks = ({ iconName, name, handleClick }: PROPS) => {
+export const SelectBanks = ({ iconName, namebank, handleClick }: PROPS) => {
   const render = (name: any) => {
     const json = {
       'Nubank':      <Nubank width={40} height={40} />,
@@ -32,7 +32,7 @@ export const SelectBanks = ({ iconName, name, handleClick }: PROPS) => {
             {render(iconName)}
           </S.containerBank>
           <S.text>
-            {name}
+            {namebank}
           </S.text>
         </S.buttonSelect>
       </S.container> 

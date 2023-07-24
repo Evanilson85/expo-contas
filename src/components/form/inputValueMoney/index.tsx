@@ -1,17 +1,18 @@
 import { useState } from 'react';
-import CurrencyInput from 'react-native-currency-input';
+import CurrencyInput, { CurrencyInputProps } from 'react-native-currency-input';
 
 import * as S from './style'
 
-export const InputValueMoney = () => {
+export const InputValueMoney = ({...props}: CurrencyInputProps) => {
   const [value, setValue] = useState<any>(0);
 
   return (
      <CurrencyInput
-      value={value}
+      // value={value}
       renderTextInput={textInputProps => <S.valueAll {...textInputProps} label={<S.textInput>Valor total</S.textInput>}  />}
     //   renderText
-      onChangeValue={setValue}
+      {...props}
+      // onChangeValue={setValue}
       placeholder='R$ 0,00'
       prefix="R$  "
       delimiter="."
@@ -19,7 +20,7 @@ export const InputValueMoney = () => {
       precision={2}
       minValue={0}
       onChangeText={(formattedValue) => {
-        console.log(formattedValue); // R$ +2.310,46
+        return formattedValue // R$ +2.310,46
       }}
     />
   )

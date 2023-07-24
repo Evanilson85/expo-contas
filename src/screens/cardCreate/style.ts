@@ -1,23 +1,28 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { CardBank } from "../../components/cards/cardBank";
 
-export const tes = styled.View`
+export const div = styled.View`
   flex: 1;
   /* background-color: #000; */
   /* opacity: 1; */
+  align-items: center;
+  margin: 50px 0;
+`;
+
+export const text = styled.Text`
+  font-family: "Roboto_700Bold";
+  font-size: 14px;
+  color: ${({ theme }: any) => theme.COLORS.GRAY_400};
 `;
 
 export const container = styled.View`
   /* background-color: ${({ theme }: any) => theme.COLORS.PAGE}; */
   background-color: ${({ theme }: any) => theme.COLORS.WHITE};
   flex: 1;
-  /* background-color: red; */
   padding: 0 24px;
 `;
 
-export const SubContainer = styled.ScrollView`
-  /* margin-bottom: 30px; */
-`;
+export const SubContainer = styled.ScrollView``;
 
 export const containerCardBack = styled(CardBank)`
   background: red !important;
