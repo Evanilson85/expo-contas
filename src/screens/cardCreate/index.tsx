@@ -1,17 +1,18 @@
 import * as S from './style'
-import { useState, useContext } from 'react'
+import { useState, useContext, useCallback } from 'react'
 
 import { HeaderStack } from '../../components/headerStack'
 import { CardBank } from '../../components/cards/cardBank'
 
 import { AppNavigatorRoutesProps } from '../../routes/Stack.routes'
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 
 import { createContextSaveCard } from '../../context'
+import { Alert } from 'react-native'
 
 export const CardCreateScreen = () => {
   
-  const { cards } = useContext(createContextSaveCard)
+  const { getCard } = useContext(createContextSaveCard)
   const navigation = useNavigation<AppNavigatorRoutesProps>();
   const [cardsBack, setCardsBack] = useState([])
 
@@ -19,40 +20,28 @@ export const CardCreateScreen = () => {
     navigation.navigate('FormCreateCard');
   }
 
+  useFocusEffect(useCallback(() => {
+    getCardSave()
+  },[]))
 
-  const banksJson = [
-    {
-      iconName: 'Inter',
-      name: 'Banco Inter'
-    },
-    {
-      iconName: 'Nubank',
-      name: 'Nubank'
-    },
-    {
-      iconName: 'Ame',
-      name: 'Ame',
-    },
-    {
-      iconName: 'Digio',
-      name: 'Digio'
-    },
-    {
-      iconName: 'MercadoPago',
-      name: 'Mercado Pago'
-    },
-  ]
-
+  async function getCardSave () {
+    try {
+      const result = await getCard()
+      setCardsBack(result as any)
+    } catch (error) {
+      Alert.alert('Error ao carregar')
+    }
+  }
 
   return (
     <>
-         <HeaderStack title='Gerenciar cartões' />
+        <HeaderStack title='Gerenciar cartões' />
         <S.container>
           <S.SubContainer>
-            {cards.map(({name, typeCard, value, icon }) => (
+            {cardsBack.map(({name, typeCard, value, icon }) => (
               <CardBank border nameBank={name} type={typeCard} value={value} key={name} nameIcon={icon?.iconName} />
             ))}
-            {cards.length < 1 && (
+            {cardsBack.length < 1 && (
               <S.div>
                 <S.text>
                   Nenhum Cartão cadastrado

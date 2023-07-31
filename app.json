@@ -18,16 +18,23 @@
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.evanilson.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "expo": {
       "userInterfaceStyle": "automatic"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5091345a-f094-4567-b93a-29d32bb45454"
+      }
     }
   }
 }

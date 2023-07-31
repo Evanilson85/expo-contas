@@ -1,51 +1,51 @@
-import { CardBank } from '../cardBank'
 import * as S from './style'
-//  const navigation = useNavigation<AppNavigatorRoutesProps>();
-import { useNavigation } from '@react-navigation/native';
+import { useContext, useCallback, useState } from 'react';
+import { CardBank } from '../cardBank'
+
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { AppNavigatorRoutesProps } from '../../../routes/Stack.routes';
 
-import { useContext } from 'react';
 import { createContextSaveCard } from '../../../context';
 
 export const Card = () => {
+
+  const [getCards, setGetCards] = useState([])
   const navigation = useNavigation<AppNavigatorRoutesProps>();
-  const { cards } = useContext(createContextSaveCard)
-  const handleOpenCardCreateScreen = () => {
-    navigation.navigate('CardCreateScreen');
+  const { getCard } = useContext(createContextSaveCard)
+
+  useFocusEffect(useCallback(() => {
+    getStorageCardAll()
+  }, []))
+
+  async function getStorageCardAll () {
+    try {
+      const getAll = await getCard() 
+      setGetCards(getAll as any)
+      console.log(getAll)
+
+    } catch (error) {
+      console.log(error)
+    }
   }
 
-  const back = [
-      {
-          id: 1,
-          name: ''
-      },
-      {
-          id: 3,
-          name: ''
-      },
-      {
-          id: 4,
-          name: ''
-      },
-  ]
+  function handleOpenCardCreateScreen () {
+    navigation.navigate('CardCreateScreen');
+  }
 
   return (
     <>
       <S.container>
         <S.text> Meus Saldos </S.text>
-        {/* {back.map(({id}) => (
-            <CardBank    key={id} />
-        ))} */}
-         {cards.map(({name, typeCard, value, icon }) => (
+         {getCards.map(({name, typeCard, value, icon }) => (
             <CardBank border nameBank={name} type={typeCard} value={value} key={name} nameIcon={icon?.iconName} />
           ))}
-          {cards.length < 1 && (
-              <S.div>
-                <S.text>
-                  Nenhum Cartão cadastrado
-                </S.text>
-              </S.div>
-            )}
+          {getCards.length < 1 && (
+            <S.div>
+              <S.text>
+                Nenhum Cartão cadastrado
+              </S.text>
+            </S.div>
+          )}
       </S.container>   
       <S.createBtn onPress={handleOpenCardCreateScreen}> 
         <S.textBtn>Adicionar Cartão</S.textBtn>

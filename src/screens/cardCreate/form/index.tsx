@@ -13,13 +13,12 @@ import { Select } from '../../../components/form/select'
 import { InputValueMoney } from '../../../components/form/inputValueMoney'
 import { Day } from '../../../components/form/day'
 import { SelectBanks } from '../../../components/form/selectBanks'
-import { ValueAll } from '../../../components/form/value'
-import Time from '../../../components/form/timer'
 
 import { createContextSaveCard } from '../../../context'
 
 import { AppNavigatorRoutesProps } from '../../../routes/Stack.routes'
 import { useNavigation } from '@react-navigation/native';
+
 
 interface PARAMSJSON {
   iconName: string
@@ -42,23 +41,16 @@ export const FormCreateCard = () => {
   const [valueSelectIcon, setValueSelectIcon] = useState<PARAMSJSON[]>([])
   const [disabled, setDisabled] = useState(false)
 
-  const { teste } = useContext(createContextSaveCard)
- const navigation = useNavigation<AppNavigatorRoutesProps>();
-
+  const { create } = useContext(createContextSaveCard)
+  
+  const navigation = useNavigation<AppNavigatorRoutesProps>();
+ 
   const buttonSheet = useRef<BottomSheet>(null)
+
   // const snapPoints = useMemo(() => ["25%", "40%", "60%"], []);
   const snapPoints = useMemo(() => ["25%", "60%"], []);
-
+  
   const { handleSubmit, control, register, setValue } = useForm<FORMPROPSVALUES>({ })
-
-  const handleFormCreateCard = (data: any) => {
-    teste(data)
-    setDisabled(true)
-    navigation.goBack()
-    setTimeout(() => {
-      setDisabled(false)
-    }, 4000);
-  }
 
   const banksJson = [
     {
@@ -83,7 +75,33 @@ export const FormCreateCard = () => {
     },
   ]
 
-  const handleSelect = ({ name }: any) => {
+  const sections = [
+    {
+      data: [
+       {
+        id: '1',
+        name: 'Cartão de Credito',
+        icon: <AntDesign name="creditcard" size={24} color="black" />
+       },
+      { 
+        id: '2',
+        name:  'Cartão de Debito',
+        icon: <Entypo name="credit-card" size={24} color="black" />
+       }
+      ],
+    },
+  ]
+
+  function handleFormCreateCard(data: any) {
+    create(data)
+    setDisabled(true)
+    navigation.goBack()
+    setTimeout(() => {
+      setDisabled(false)
+    }, 4000);
+  }
+
+  function handleSelect({ name }: any) {
     setValueSelect(name)
     setValue('typeCard', name)
     handleSelectClose() 
@@ -104,24 +122,7 @@ export const FormCreateCard = () => {
     ), []
   );
 
-  const sections = [
-    {
-      data: [
-       {
-        id: '1',
-        name: 'Cartão de Credito',
-        icon: <AntDesign name="creditcard" size={24} color="black" />
-       },
-      { 
-        id: '2',
-        name:  'Cartão de Debito',
-        icon: <Entypo name="credit-card" size={24} color="black" />
-       }
-      ],
-    },
-  ]
-
-  const handleSelectOpen = () => {
+  function handleSelectOpen()  {
     const isVisible = Keyboard.isVisible()
     if(isVisible) {
       Keyboard.dismiss()
