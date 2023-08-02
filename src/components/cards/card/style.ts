@@ -20,7 +20,8 @@ export const text = styled.Text`
 `;
 
 export const createBtn = styled.TouchableOpacity`
-  background-color: #bbf7d0;
+  /* background-color: #bbf7d0; */
+  background-color: ${(props: any) => props.theme.COLORS.BUTTONDEFAULT};
   height: 50px;
   border-radius: 5px;
   align-items: center;
@@ -28,7 +29,8 @@ export const createBtn = styled.TouchableOpacity`
 `;
 
 export const textBtn = styled.Text`
-  color: #065f46;
+  /* color: #065f46; */
+  color: ${(props: any) => props.theme.COLORS.BUTTONDEFAULTTEXT};
   font-family: "Roboto_700Bold";
 `;
 

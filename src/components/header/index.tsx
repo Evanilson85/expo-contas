@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import * as S from './style'
 import logo from '../../assets/lion.png'
 import { Ionicons } from '@expo/vector-icons';
-
+import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { AppNavigatorRoutesProps } from "../../routes/Stack.routes";
 
@@ -19,7 +19,13 @@ export const Header = () => {
 
   return (
     <>
-      <StatusBar style='light' backgroundColor='#22c55e'  translucent animated networkActivityIndicatorVisible={true}  />
+      <LinearGradient
+        // Button Linear Gradient
+        colors={[ '#8462B7','#2E1560',]}
+        // end={{x: 0.9, y: 0}}
+        start={{ x: 2, y: 0.2}}
+      >
+      <StatusBar style='light' backgroundColor='#2E1560'  translucent animated networkActivityIndicatorVisible={true}  />
       <S.Container>
         <S.div>
           {/* <S.Logo source={logo} placeholder={blurhash} transition={1000} /> */}
@@ -34,6 +40,7 @@ export const Header = () => {
           </S.textBtn>
         </S.btnNotification>
       </S.Container>
+      </LinearGradient>
     </>
   )
 }

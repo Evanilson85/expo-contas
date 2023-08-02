@@ -7,9 +7,11 @@ import { AppNavigatorRoutesProps } from '../../../routes/Stack.routes';
 
 import { createContextSaveCard } from '../../../context';
 
+import { ICARDS } from '../../../@interfaces';
+
 export const Card = () => {
 
-  const [getCards, setGetCards] = useState([])
+  const [getCards, setGetCards] = useState<ICARDS[]>([])
   const navigation = useNavigation<AppNavigatorRoutesProps>();
   const { getCard } = useContext(createContextSaveCard)
 

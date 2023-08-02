@@ -19,7 +19,7 @@ export const HeaderStack = ({ title }: TITLEPROS) => {
 
   return (
     <>
-      <StatusBar style='light' backgroundColor='#22c55e'  translucent animated networkActivityIndicatorVisible={true}  />
+      <StatusBar style='light' backgroundColor='#2E1560'  translucent animated networkActivityIndicatorVisible={true}  />
       <S.header>
           <S.btnGoBack onPress={goBack}>
             <AntDesign name="arrowleft" size={30} color="#fff" />

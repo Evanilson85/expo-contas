@@ -14,7 +14,11 @@ export const Balances = () => {
     return (
         <S.container>
             <S.containerValue>
-                <S.textValue>R$ 2000</S.textValue>
+                <S.textValue>R$ 2.000
+                    <S.subValue>
+                        ,50
+                    </S.subValue>
+                </S.textValue>
                 <S.btnEye onPress={handleChange}>
                     {eye ? <Ionicons name="eye-off-outline" size={34} color="#7C7C8A" /> :   <Ionicons name="eye-outline" size={34} color="#7C7C8A" />}
                 </S.btnEye>

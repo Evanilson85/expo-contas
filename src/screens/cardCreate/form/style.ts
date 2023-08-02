@@ -17,6 +17,7 @@ export const grupContainer = styled.View`
 
 export const buttonCreate = styled.TouchableOpacity`
   background-color: #bbf7d0;
+  background-color: ${(props: any) => props.theme.COLORS.BUTTONDEFAULT};
   height: 50px;
   border-radius: 5px;
   align-items: center;
@@ -26,6 +27,7 @@ export const buttonCreate = styled.TouchableOpacity`
 
 export const textButton = styled.Text`
   font-family: "Roboto_700Bold";
+  color: ${(props: any) => props.theme.COLORS.BUTTONDEFAULTTEXT};
 `;
 
 export const sheetHeader = styled.View`

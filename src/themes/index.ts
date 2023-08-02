@@ -1,9 +1,13 @@
 export default {
   COLORS: {
-    DEFAULT: "#22c55e",
+    // DEFAULT: "#00875F",
+    // DEFAULT: "#22c55e",
+    DEFAULT: "#2E1560",
     WHITE: "#FFFFFF",
-    PAGE: "#e2e8f0",
+    PAGE: "#E2E2E2",
 
+    BUTTONDEFAULT: "#CEBBF7",
+    BUTTONDEFAULTTEXT: "#2E1560",
     ROW: "#f3f4f6",
     Input: "#f3f4f6",
 

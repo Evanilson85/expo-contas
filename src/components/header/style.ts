@@ -11,7 +11,7 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   padding-top: ${Math.round(heightStatusBar)}px;
-  background-color: ${(props: any) => props.theme.COLORS.DEFAULT};
+  /* background-color: ${(props: any) => props.theme.COLORS.DEFAULT}; */
 `;
 
 export const text = styled.Text`

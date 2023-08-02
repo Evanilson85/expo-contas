@@ -22,7 +22,13 @@ export const containerValue = styled.View`
 
 export const textValue = styled.Text`
   color: ${(props: any) => props.theme.COLORS.GRAY_300};
-  font-size: 24px;
+  font-size: 30px;
+  font-family: "Roboto_700Bold";
+`;
+
+export const subValue = styled.Text`
+  color: ${(props: any) => props.theme.COLORS.GRAY_300};
+  font-size: 14px;
   font-family: "Roboto_700Bold";
 `;
 
