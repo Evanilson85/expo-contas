@@ -1,5 +1,4 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { KeyCards } from "../key";
 import { getStorageCard } from "./getCard";
 
@@ -12,6 +11,10 @@ interface IUCard {
     name: string;
   };
   value: number;
+  expense: string;
+  currentValue: string;
+  id: string;
+  color: string | "#5b259f";
 }
 
 export async function createStorageCard(card: IUCard) {

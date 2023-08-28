@@ -22,12 +22,10 @@ export const MyStack = () => {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="PageHome" component={TabRouters} />
-      {/* <Stack.Screen name="PageFinancial" component={TabRouters} /> */}
       <Stack.Screen name="CardCreateScreen" component={CardCreateScreen} />
       <Stack.Screen name="Notification" component={Notification} />
-      
-      
       <Stack.Screen name="FormCreateCard" component={FormCreateCard} />
+      {/* <Stack.Screen name="PageFinancial" component={TabRouters} /> */}
       {/* <Stack.Screen name="Notifications" component={Notifications} /> */}
       {/* <Stack.Screen name="Profile" component={Profile} /> */}
       {/* <Stack.Screen name="Settings" component={Settings} /> */}

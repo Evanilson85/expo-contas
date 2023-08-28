@@ -4,6 +4,7 @@ import Inter from '../../../assets/bank/banco-inter.svg'
 import Ame from '../../../assets/bank/ame-logo.svg'
 import Digio from '../../../assets/bank/digio-logo.svg'
 import MercadoPago from '../../../assets/bank/mercado-pago-logo.svg'
+import { convert } from '../../../utils/convertMoney'
 
 interface PROPS {
   border?: boolean
@@ -49,7 +50,7 @@ export const CardBank = ({ border, nameIcon, nameBank, type, value }: PROPS) => 
       </S.div>
       <S.div>
         {/* <S.name>Lim disponivel</S.name> */}
-        <S.name>R$ {value}</S.name>
+        <S.name>{convert(value)}</S.name>
       </S.div>
     </S.container>
   </>

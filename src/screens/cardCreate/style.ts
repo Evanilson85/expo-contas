@@ -1,10 +1,8 @@
-import styled, { css } from "styled-components/native";
+import styled from "styled-components/native";
 import { CardBank } from "../../components/cards/cardBank";
 
 export const div = styled.View`
   flex: 1;
-  /* background-color: #000; */
-  /* opacity: 1; */
   align-items: center;
   margin: 50px 0;
 `;
@@ -17,15 +15,16 @@ export const text = styled.Text`
 
 export const container = styled.View`
   /* background-color: ${({ theme }: any) => theme.COLORS.PAGE}; */
-  background-color: ${({ theme }: any) => theme.COLORS.WHITE};
+  background-color: #fff;
   flex: 1;
-  padding: 0 20px;
-  /* padding: 0 24px; */
+  padding: 0 10px;
+  background-color: ${(props: any) => props.color};
 `;
 
 export const SubContainer = styled.View`
   align-items: center;
   margin: 20px;
+  /* background-color: #fff; */
 `;
 
 export const containerCardBack = styled(CardBank)`
@@ -37,7 +36,6 @@ export const containerCardBack = styled(CardBank)`
 `;
 
 export const CardCreate = styled.TouchableOpacity`
-  /* background-color: #bbf7d0; */
   background-color: ${(props: any) => props.theme.COLORS.CardDEFAULT};
   height: 50px;
   border-radius: 5px;

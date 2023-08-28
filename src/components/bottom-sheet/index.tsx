@@ -31,11 +31,11 @@ export const BottomSheetApp = ({ isOpenIndex }: PROPS) => {
   const handleSheetChange = useCallback((index: any) => {
     // console.log("teste", index, isOpen);
     if(index != 1) {
-      console.log("1", isOpen);
+      // console.log("1", isOpen);
       setIsOpen(true)
       return
     }
-    console.log("2", isOpen);
+    // console.log("2", isOpen);
     setIsOpen(false)
   }, []);
   const handleSnapPress = useCallback((index: any) => {

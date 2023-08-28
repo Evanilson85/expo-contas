@@ -7,23 +7,11 @@ const value = width * 0.8 - 10;
 export const container = styled.View`
   height: 200px;
   border-radius: 10px;
-  background-color: ${({ color }: any) => color};
+  background-color: #d3d3d3;
   padding: 20px;
   justify-content: space-between;
-  ${(props: any) => {
-    switch (props.amountOne) {
-      case "one":
-        return css`
-          margin: 20px auto;
-          width: 100%;
-        `;
-      default:
-        return css`
-          width: ${Math.round(value)}px;
-          margin: 20px 5px;
-        `;
-    }
-  }}
+  margin: 20px auto;
+  width: 100%;
 `;
 
 export const div = styled.View`
@@ -37,7 +25,7 @@ export const divCol = styled.View``;
 export const text = styled.Text`
   font-family: "Roboto_700Bold";
   font-size: 20px;
-  color: #fff;
+  color: #2e1560;
 `;
 
 export const subText = styled.Text`
